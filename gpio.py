@@ -56,7 +56,7 @@ class GPIO_Handler:
         try:
             with open(f"{self._gpio_path}/gpio{self._io}/value", "w") as direction:
                 direction.write(str(new_value))
-            print(f"GPIO {self._io} value set to {new_value}")
+            print(f"GPIO{self._io} value set to {new_value}")
             self._value = new_value
         except Exception as e:
             print(f"Error setting {new_value}: {str(e)}")
@@ -67,17 +67,15 @@ class GPIO_Handler:
         try:
             with open(f"{self._gpio_path}/unexport", "w") as unexport:
                 unexport.write(str(self._io))
-            print(f"GPIO {self._io} unexported")
+            print(f"GPIO{self._io} unexported")
         except Exception as e:
             print(f"Error while unexporting IO: {str(e)}")
 
     # Private methods
     def _init_io(self):
-        # Set io direction to "input" by default
-        self.direction("out")
         try:
             with open(f"{self._gpio_path}/export", "w") as export:
                 export.write(str(self._io))
-            print(f"GPIO {self._io} exported")
+            print(f"GPIO{self._io} exported")
         except Exception as e:
             print(f"Error while exporting IO: {str(e)}")
